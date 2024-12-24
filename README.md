@@ -15,6 +15,10 @@
 ---
 
 ## 📖 Getting Started
+### LICENSE
+> [!IMPORTANT]  
+> When using it outside of the Dream server, you must add a link to this project in the Discord bot's introduction section.
+> Additionally, if modifications occur, you must disclose the source code.
 
 ### Prerequisites
 
