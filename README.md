@@ -17,9 +17,11 @@
 ## 📖 Getting Started
 ### LICENSE
 > [!IMPORTANT]  
-> When using it outside of the Dream server, you must add a link to this project in the Discord bot's introduction section.
-> Additionally, if modifications occur, you must disclose the source code.
-
+> This project is licensed under a this license,<br>
+> except for specific files (e.g., `utils/steam.py`), which are licensed under the GNU General Public License v2.0 (GPL-2.0).<br><br>
+> When using this project outside of the Dream server, you must add a link to this project in the Discord bot's introduction section.<br>
+> Additionally, if modifications occur, you must disclose the source code.<br><br>
+> Files under GPL-2.0 (e.g., `utils/steam.py`) must comply with the terms of the GNU General Public License v2.0.
 ### Prerequisites
 
 - 💻 Install  **Python**
@@ -38,7 +40,7 @@ cd Frontline
 mv config.example.py config.py
 
 # Install dependencies
-pip install discord.py orjson aiohttp asyncio
+pip install discord.py orjson aiohttp asyncio sentry-sdk
 
 # Run your bot
 python main.py

@@ -1,4 +1,5 @@
 from discord.ext import commands, tasks
+from contextlib import suppress
 from config import Config
 import discord
 import aiohttp
@@ -43,7 +44,12 @@ class Server(commands.Cog):
                     self.servers = servers
 
         except Exception as e:
-            print(e)
+            response_text = response.status
+
+            with suppress(Exception):
+                response_text = await response.text()
+
+            raise Exception(f"Error while fetching server data: {e} (Data: {response_text})")
 
     @tasks.loop(seconds=2)
     async def update_presence(self):

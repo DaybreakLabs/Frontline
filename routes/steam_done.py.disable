@@ -1,0 +1,29 @@
+from aiohttp import web
+from utils.steam import SteamSignIn
+from utils.database import Database
+class TestRoute:
+    method = "GET"
+    path = "/steam/done"
+
+    async def handler(self, request: web.Request):
+        ip = request.headers.get("CF-Connecting-IP", request.remote)
+        
+        if not request.app.temp.get(ip):
+            return web.HTTPBadRequest()
+        
+        state = request.app.temp[ip]
+        del request.app.temp[ip]
+
+        login = SteamSignIn()
+        result = await login.validate_result(request.query)
+
+        user_data = {
+            "steam_id": result,
+        }
+
+        await Database().write(f"data/steam/{state['discord_id']}.json", user_data)
+        return web.json_response({"message": result})
+
+
+def get_route():
+    return TestRoute()

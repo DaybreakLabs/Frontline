@@ -1,0 +1,21 @@
+from discord.ext import commands, tasks
+from config import Config
+import discord
+import aiohttp
+import orjson  # orjson is faster than json
+
+
+class Steam(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.Cog.listener(name="on_guild_channel_create")
+    async def on_channel_create(self, channel: discord.TextChannel):
+        return # WIP
+        if channel.guild.id == Config.guild_id:
+            if channel.name.startswith(Config.ticket_name):
+                await channel.set_permissions(channel.guild.default_role, send_messages=False)
+
+
+async def setup(bot):
+    await bot.add_cog(Steam(bot))
