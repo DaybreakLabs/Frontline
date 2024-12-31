@@ -34,7 +34,7 @@ class FrontlineBot(commands.Bot):
         print("=== Loading extensions ===")
         for extension in os.listdir("cogs"):
             if extension.endswith(".py"):
-                #await self.load_extension(f"cogs.{extension[:-3]}")
+                await self.load_extension(f"cogs.{extension[:-3]}")
                 print(f"Loaded extension: {extension}")
         print("=== Extensions loaded ===\n")
 
